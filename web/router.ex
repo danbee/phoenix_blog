@@ -18,7 +18,7 @@ defmodule PhoenixBlog.Router do
 
     get "/", PageController, :index
 
-    resources "/posts", PostController, only: [:index, :new, :create]
+    resources "/posts", PostController, only: [:index, :new, :create, :edit, :update]
   end
 
   # Other scopes may use custom stacks.

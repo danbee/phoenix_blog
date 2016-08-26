@@ -31,6 +31,25 @@ defmodule PhoenixBlog.BlogPostsTest do
     assert blog_title_text == "My new blog post"
   end
 
+  test "edit a blog post" do
+    valid_attrs = %{body: "My test content", title: "My test post"}
+    Post.changeset(%Post{}, valid_attrs)
+    |> Repo.insert
+
+    navigate_to "/posts"
+
+    find_element(:css, "a.edit-post")
+    |> click
+
+    find_element(:name, "post[title]")
+    |> fill_field("My new blog post")
+
+    find_element(:css, "input[type='submit']")
+    |> click
+
+    assert blog_title_text == "My new blog post"
+  end
+
   defp blog_title_text do
     find_element(:css, "article.post h1") |> visible_text
   end

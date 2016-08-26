@@ -4,5 +4,6 @@
   <article class="post">
     <h1><%= post.title %></h1>
     <div class="body"><%= post.body %></div>
+    <%= link "Edit Post", to: post_path(@conn, :edit, post), class: "edit-post" %>
   </article>
 <% end %>

@@ -19,6 +19,25 @@ defmodule PhoenixBlog.PostController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+    post = Repo.get!(Post, id)
+    |> Post.changeset(%{})
+    render conn, "edit.html", post: post
+  end
+
+  def update(conn, %{"id" => id, "post" => post_params}) do
+    case update_post(id, post_params) do
+      {:ok, _post} ->
+        redirect(conn, to: post_path(conn, :index))
+    end
+  end
+
+  defp update_post(id, params) do
+    Repo.get!(Post, id)
+    |> Post.changeset(params)
+    |> Repo.update
+  end
+
   defp create_post(params) do
     Post.changeset(%Post{}, params)
     |> Repo.insert
