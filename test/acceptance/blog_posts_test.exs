@@ -8,13 +8,13 @@ defmodule PhoenixBlog.BlogPostsTest do
     Post.changeset(%Post{}, valid_attrs)
     |> Repo.insert
 
-    navigate_to "/posts"
+    navigate_to post_path(build_conn, :index)
 
     assert blog_title_text == "My test post"
   end
 
   test "add a blog post" do
-    navigate_to "/posts"
+    navigate_to post_path(build_conn, :index)
 
     find_element(:css, "a.new-post")
     |> click
@@ -36,7 +36,7 @@ defmodule PhoenixBlog.BlogPostsTest do
     Post.changeset(%Post{}, valid_attrs)
     |> Repo.insert
 
-    navigate_to "/posts"
+    navigate_to post_path(build_conn, :index)
 
     find_element(:css, "a.edit-post")
     |> click
