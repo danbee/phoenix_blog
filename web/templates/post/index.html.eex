@@ -1,4 +1,4 @@
-<%= link "+ New Post", to: post_path(@conn, :new), class: "new-post" %>
+<%= link "New Post", to: post_path(@conn, :new), class: "new-post" %>
 
 <%= for post <- @posts do %>
   <article class="post">
