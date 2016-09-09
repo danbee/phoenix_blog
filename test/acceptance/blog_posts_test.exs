@@ -16,17 +16,12 @@ defmodule PhoenixBlog.BlogPostsTest do
   test "add a blog post" do
     navigate_to post_path(build_conn, :index)
 
-    find_element(:css, "a.new-post")
-    |> click
+    click({:link_text, "New Post"})
 
-    find_element(:name, "post[title]")
-    |> fill_field("My new blog post")
+    fill_field({:name, "post[title]"}, "My new blog post")
+    fill_field({:name, "post[body]"}, "This is my new amazing blog post.")
 
-    find_element(:name, "post[body]")
-    |> fill_field("This is my new amazing blog post.")
-
-    find_element(:css, "input[type='submit']")
-    |> click
+    click({:css, "input[type='submit']"})
 
     assert blog_title_text == "My new blog post"
   end
@@ -38,14 +33,11 @@ defmodule PhoenixBlog.BlogPostsTest do
 
     navigate_to post_path(build_conn, :index)
 
-    find_element(:css, "a.edit-post")
-    |> click
+    click({:link_text, "Edit Post"})
 
-    find_element(:name, "post[title]")
-    |> fill_field("My new blog post")
+    fill_field({:name, "post[title]"}, "My new blog post")
 
-    find_element(:css, "input[type='submit']")
-    |> click
+    click({:css, "input[type='submit']"})
 
     assert blog_title_text == "My new blog post"
   end
