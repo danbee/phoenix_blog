@@ -32,6 +32,13 @@ defmodule PhoenixBlog.PostController do
     end
   end
 
+  def delete(conn, %{"id" => id}) do
+    case delete_post(id) do
+      _post ->
+        redirect(conn, to: post_path(conn, :index))
+    end
+  end
+
   defp update_post(id, params) do
     Repo.get!(Post, id)
     |> Post.changeset(params)
@@ -41,5 +48,10 @@ defmodule PhoenixBlog.PostController do
   defp create_post(params) do
     Post.changeset(%Post{}, params)
     |> Repo.insert
+  end
+
+  defp delete_post(id) do
+    Repo.get!(Post, id)
+    |> Repo.delete!
   end
 end

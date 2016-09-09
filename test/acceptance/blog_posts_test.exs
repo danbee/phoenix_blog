@@ -42,6 +42,18 @@ defmodule PhoenixBlog.BlogPostsTest do
     assert blog_title_text == "My new blog post"
   end
 
+  test "delete a blog post" do
+    valid_attrs = %{body: "My test content", title: "My test post"}
+    Post.changeset(%Post{}, valid_attrs)
+    |> Repo.insert
+
+    navigate_to post_path(build_conn, :index)
+
+    click({:css, "input.delete-post"})
+
+    assert !element?(:css, "article.post h1")
+  end
+
   defp blog_title_text do
     find_element(:css, "article.post h1") |> visible_text
   end
