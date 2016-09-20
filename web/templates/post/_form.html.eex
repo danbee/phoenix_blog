@@ -1,0 +1,9 @@
+<%= content_tag :div, class: :input do %>
+  <%= input @f, :title %>
+<% end %>
+<%= content_tag :div, class: :input do %>
+  <%= input @f, :body, as: :textarea %>
+<% end %>
+<%= content_tag :div, class: :buttons do %>
+  <%= submit "Submit" %>
+<% end %>

@@ -1,5 +1,3 @@
 <%= form_for @post, post_path(@conn, :update, @post.data), fn(f) -> %>
-  <%= text_input f, :title %>
-  <%= textarea f, :body %>
-  <%= submit "Submit" %>
+  <%= render "_form.html", f: f %>
 <% end %>
