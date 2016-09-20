@@ -5,7 +5,7 @@
     <h1><%= post.title %></h1>
     <div class="body"><%= raw html_body(post) %></div>
     <%= link "Edit Post", to: post_path(@conn, :edit, post), class: "edit-post" %>
-    <%= button "Delete Post", to: post_path(@conn, :delete, post),
-                              method: :delete, class: "delete-post" %>
+    <%= link "Delete Post", to: post_path(@conn, :delete, post),
+                            method: :delete, class: "delete-post" %>
   </article>
 <% end %>
