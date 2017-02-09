@@ -6,7 +6,7 @@ defmodule PhoenixBlog.FeatureCase do
       use PhoenixBlog.ConnCase
 
       use Hound.Helpers
-      hound_session
+      hound_session()
     end
   end
 end

@@ -8,22 +8,22 @@ defmodule PhoenixBlog.BlogPostsTest do
     Post.changeset(%Post{}, valid_attrs)
     |> Repo.insert
 
-    navigate_to post_path(build_conn, :index)
+    navigate_to post_path(build_conn(), :index)
 
-    assert blog_title_text == "My test post"
+    assert blog_title_text() == "My test post"
   end
 
   test "add a blog post" do
-    navigate_to post_path(build_conn, :index)
+    navigate_to post_path(build_conn(), :index)
 
     click({:link_text, "New Post"})
 
     fill_field({:name, "post[title]"}, "My new blog post")
     fill_field({:name, "post[body]"}, "This is my new amazing blog post.")
 
-    click({:css, "input[type='submit']"})
+    click({:css, "button[type='submit']"})
 
-    assert blog_title_text == "My new blog post"
+    assert blog_title_text() == "My new blog post"
   end
 
   test "edit a blog post" do
@@ -31,15 +31,15 @@ defmodule PhoenixBlog.BlogPostsTest do
     Post.changeset(%Post{}, valid_attrs)
     |> Repo.insert
 
-    navigate_to post_path(build_conn, :index)
+    navigate_to post_path(build_conn(), :index)
 
     click({:link_text, "Edit Post"})
 
     fill_field({:name, "post[title]"}, "My new blog post")
 
-    click({:css, "input[type='submit']"})
+    click({:css, "button[type='submit']"})
 
-    assert blog_title_text == "My new blog post"
+    assert blog_title_text() == "My new blog post"
   end
 
   test "delete a blog post" do
@@ -47,9 +47,9 @@ defmodule PhoenixBlog.BlogPostsTest do
     Post.changeset(%Post{}, valid_attrs)
     |> Repo.insert
 
-    navigate_to post_path(build_conn, :index)
+    navigate_to post_path(build_conn(), :index)
 
-    click({:css, "input.delete-post"})
+    click({:css, "a.delete-post"})
 
     assert !element?(:css, "article.post h1")
   end

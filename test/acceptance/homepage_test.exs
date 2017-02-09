@@ -5,7 +5,7 @@ defmodule PhoenixBlog.HomepageTest do
     navigate_to "/"
     find_element(:css, "body")
 
-    assert title_text == "Welcome to Phoenix!"
+    assert title_text() == "Welcome to Phoenix!"
   end
 
   defp title_text do
