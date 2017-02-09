@@ -18,8 +18,8 @@ defmodule PhoenixBlog.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {PhoenixBlog, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy,
+                    :logger, :gettext, :phoenix_ecto, :postgrex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,9 +36,9 @@ defmodule PhoenixBlog.Mixfile do
       {:formulator, "~> 0.0.5"},
       {:gettext, "~> 0.11"},
       {:hound, "~> 1.0"},
-      {:phoenix, "~> 1.2.0"},
-      {:phoenix_ecto, "~> 3.0"},
-      {:phoenix_html, "~> 2.6"},
+      {:phoenix, "~> 1.2.1"},
+      {:phoenix_ecto, "~> 3.2"},
+      {:phoenix_html, "~> 2.9"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:phoenix_pubsub, "~> 1.0"},
       {:postgrex, ">= 0.0.0"},
