@@ -3,6 +3,10 @@ defmodule PhoenixBlog.Endpoint do
 
   socket "/socket", PhoenixBlog.UserSocket
 
+  if Application.get_env(:your_app, :sql_sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox
+  end
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest

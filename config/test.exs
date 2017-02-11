@@ -6,6 +6,8 @@ config :phoenix_blog, PhoenixBlog.Endpoint,
   http: [port: 4001],
   server: true
 
+config :phoenix_blog, :sql_sandbox, true
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 
@@ -15,5 +17,3 @@ config :phoenix_blog, PhoenixBlog.Repo,
   database: "phoenix_blog_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
-
-config :hound, driver: "phantomjs"
