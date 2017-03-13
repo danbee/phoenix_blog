@@ -3,6 +3,7 @@ defmodule PhoenixBlog.PostView do
   import Formulator
 
   def html_body(post) do
+    # TODO: Filter out `script` tags.
     Earmark.as_html!(post.body, %Earmark.Options{smartypants: true})
   end
 end
