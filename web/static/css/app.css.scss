@@ -3,3 +3,9 @@
 @import "bourbon/bourbon";
 @import "base/base";
 @import "neat/neat";
+
+.container {
+  @include grid-container;
+  @include margin(null auto);
+  max-width: 50rem;
+}
