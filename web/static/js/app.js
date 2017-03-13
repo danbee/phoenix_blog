@@ -21,6 +21,8 @@ import "phoenix_html"
 // import socket from "./socket"
 import SimpleMDE from "simplemde"
 
-var simplemde = new SimpleMDE({
-  element: document.getElementById("post_body")
-});
+const post_body = document.getElementById("post_body");
+
+if (post_body != null) {
+  var simplemde = new SimpleMDE({ element: post_body });
+}
