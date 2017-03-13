@@ -17,3 +17,6 @@ config :phoenix_blog, PhoenixBlog.Repo,
   database: "phoenix_blog_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# Let's see a screenshot if an integration test fails
+config :wallaby, screenshot_on_failure: true
