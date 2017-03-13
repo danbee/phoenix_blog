@@ -10,7 +10,7 @@ defmodule PhoenixBlog.BlogPostsTest do
 
     post_title =
       session
-      |> visit("/posts")
+      |> visit("/")
       |> find("article.post h1")
       |> text
 
@@ -19,7 +19,7 @@ defmodule PhoenixBlog.BlogPostsTest do
 
   test "add a blog post", %{session: session} do
     session
-    |> visit("/posts")
+    |> visit("/")
     |> click_link("New Post")
     |> fill_in("Title", with: "My new blog post")
     |> fill_in("Body", with: "This is my new amazing blog post.")
@@ -39,7 +39,7 @@ defmodule PhoenixBlog.BlogPostsTest do
     |> Repo.insert
 
     session
-    |> visit("/posts")
+    |> visit("/")
     |> click_link("Edit Post")
     |> fill_in("Title", with: "My new blog post")
     |> click_button("Submit")
@@ -58,7 +58,7 @@ defmodule PhoenixBlog.BlogPostsTest do
     |> Repo.insert
 
     session
-    |> visit("/posts")
+    |> visit("/")
     |> click_link("Delete Post")
 
     assert has_no_css?(session, "article.post h1")
