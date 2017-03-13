@@ -3,7 +3,6 @@ defmodule PhoenixBlog.PostView do
   import Formulator
 
   def html_body(post) do
-    {:safe, result} = Phoenix.HTML.html_escape(post.body)
-    Earmark.as_html!(result, %Earmark.Options{smartypants: true})
+    Earmark.as_html!(post.body, %Earmark.Options{smartypants: true})
   end
 end
