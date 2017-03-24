@@ -5,9 +5,9 @@ defmodule PhoenixBlog.HomepageTest do
     title =
       session
       |> visit("/")
-      |> find("body")
-      |> find(".header h1")
-      |> text
+      |> find(Query.css("body"))
+      |> find(Query.css(".header h1"))
+      |> Element.text
 
     assert title == "Dan’s Blog"
   end
