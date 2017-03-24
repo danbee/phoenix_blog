@@ -41,7 +41,7 @@ defmodule PhoenixBlog.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:phoenix_pubsub, "~> 1.0"},
       {:postgrex, ">= 0.0.0"},
-      {:wallaby, "~> 0.15.0"},
+      {:wallaby, "~> 0.16.1"},
     ]
   end
 

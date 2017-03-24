@@ -11,8 +11,8 @@ defmodule PhoenixBlog.BlogPostsTest do
     post_title =
       session
       |> visit("/")
-      |> find("article.post h1")
-      |> text
+      |> find(Query.css("article.post h1"))
+      |> Element.text
 
     assert post_title == "My test post"
   end
@@ -20,15 +20,17 @@ defmodule PhoenixBlog.BlogPostsTest do
   test "add a blog post", %{session: session} do
     session
     |> visit("/")
-    |> click_link("New Post")
-    |> fill_in("Title", with: "My new blog post")
-    |> fill_in("Body", with: "This is my new amazing blog post.")
-    |> click_button("Submit")
+    |> click(Query.link("New Post"))
+    |> fill_in(Query.text_field("Title"), with: "My new blog post")
+    |> execute_script("window.postEditor.value('This is my new amazing blog post.')")
+
+    session
+    |> click(Query.button("Submit"))
 
     post_title =
       session
-      |> find("article.post h1")
-      |> text
+      |> find(Query.css("article.post h1"))
+      |> Element.text
 
     assert post_title == "My new blog post"
   end
@@ -40,14 +42,14 @@ defmodule PhoenixBlog.BlogPostsTest do
 
     session
     |> visit("/")
-    |> click_link("Edit Post")
-    |> fill_in("Title", with: "My new blog post")
-    |> click_button("Submit")
+    |> click(Query.link("Edit Post"))
+    |> fill_in(Query.text_field("Title"), with: "My new blog post")
+    |> click(Query.button("Submit"))
 
     post_title =
       session
-      |> find("article.post h1")
-      |> text
+      |> find(Query.css("article.post h1"))
+      |> Element.text
 
     assert post_title == "My new blog post"
   end
@@ -59,7 +61,7 @@ defmodule PhoenixBlog.BlogPostsTest do
 
     session
     |> visit("/")
-    |> click_link("Delete Post")
+    |> click(Query.link("Delete Post"))
 
     assert has_no_css?(session, "article.post h1")
   end
